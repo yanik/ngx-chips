@@ -2,15 +2,6 @@
   "name": "ngx-chips",
   "version": "1.9.3",
   "description": "Tag Input component for Angular",
-  "scripts": {
-    "release": "npm run build && npm publish dist",
-    "postrelease": "rm -rf dist",
-    "build": "ng-packagr -p package.json && mkdir ./dist/dist && cp -R ./modules/core/styles ./dist/core/styles && cp ./dist/bundles/ngx-chips.umd.js ./dist/dist/ngx-chips.bundle.js",
-    "server": "webpack-dev-server --config webpack.demo.js --inline --colors --progress --port 3010 --content-base demo",
-    "start": "npm run server",
-    "test": "karma start karma.conf.js",
-    "codecov": "codecov"
-  },
   "author": {
     "name": "Giancarlo Buomprisco",
     "email": "giancarlopsk@gmail.com"
@@ -73,7 +64,8 @@
     "zone.js": "0.8.26"
   },
   "dependencies": {
-    "ng2-material-dropdown": "git+https://github.com/yanik/ng2-material-dropdown.git#0.10.1"
+    "ng2-material-dropdown": "git+https://github.com/yanik/ng2-material-dropdown.git#0.10.1",
+    "tslib": "^1.9.0"
   },
   "peerDependencies": {
     "@angular/animations": "^6.0.0",
@@ -98,16 +90,9 @@
   },
   "homepage": "https://github.com/Gbuomprisco/ngx-chips",
   "$schema": "./node_modules/ng-packagr/package.schema.json",
-  "ngPackage": {
-    "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
-    "lib": {
-      "entryFile": "modules/index.ts",
-      "externals": {
-        "ng2-material-dropdown": "ng2-material-dropdown"
-      }
-    },
-    "whitelistedNonPeerDependencies": [
-      "ng2-material-dropdown"
-    ]
-  }
+  "main": "bundles/ngx-chips.umd.js",
+  "module": "esm5/ngx-chips.js",
+  "es2015": "esm2015/ngx-chips.js",
+  "typings": "ngx-chips.d.ts",
+  "metadata": "ngx-chips.metadata.json"
 }
